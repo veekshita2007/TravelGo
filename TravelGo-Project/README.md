@@ -111,3 +111,4 @@ Backend: Python, Flask
 Cloud: AWS DynamoDB, AWS SNS
 
 Frontend: HTML5, CSS3
+
