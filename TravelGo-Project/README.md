@@ -87,9 +87,6 @@ Note: If AWS is not configured, the app falls back to local in-memory storage.
 
 6. Run the Application
 python app.py
-OR
-flask run
-The server will start at: http://127.0.0.1:5000
 
 ☁️ AWS Setup (For Deployment)
 DynamoDB Tables
@@ -111,4 +108,5 @@ Backend: Python, Flask
 Cloud: AWS DynamoDB, AWS SNS
 
 Frontend: HTML5, CSS3
+
 
