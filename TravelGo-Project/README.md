@@ -1,79 +1,113 @@
-Overview
 
-TravelGo is a web-based travel booking platform that allows users to easily book transportation and accommodation services such as Flights, Trains, Buses, and Hotels. The application provides a simple and user-friendly interface where users can create accounts, search travel options, make bookings, view booking history, and cancel reservations.
+# TravelGo ✈️
 
-The system is built using Python Flask, HTML, CSS, and JavaScript, with optional integration with AWS DynamoDB and SNS for cloud data storage and notifications.
+**TravelGo** is a cloud-based travel booking platform built using **Flask**. It allows users to register, log in, and book buses, trains, flights, and hotels from a unified interface.
 
-Features
-User Authentication
+The application integrates with **AWS DynamoDB** for data storage and **AWS SNS** for email notifications when bookings are created or cancelled.
 
-User Registration
+---
 
-Secure Login System
+## 🚀 Features
 
-Password hashing for security
+* **Authentication:** User registration and login with password hashing via `Werkzeug`.
+* **Booking System:** Unified interface for Bus, Train, Flight, and Hotel bookings.
+* **Automation:** Automatic seat assignment and ticket pricing.
+* **Management:** View booking history and perform cancellations.
+* **Cloud Integration:** DynamoDB for persistent storage and SNS for automated notifications.
 
-Session-based authentication
+---
 
-Travel Booking
+## 📂 Project Structure
 
-Users can book different types of travel services:
+```text
+travelgo_project/
+├── app.py              # Main Flask application
+├── requirements.txt    # Python dependencies
+├── .gitignore          # Files to exclude from Git
+├── .env.example        # Template for environment variables
+├── README.md           # Project documentation
+├── templates/          # HTML files
+│   ├── base.html
+│   ├── home.html
+│   ├── login.html
+│   ├── register.html
+│   ├── dashboard.html
+│   ├── booking.html
+│   └── history.html
+└── static/             # Static assets
+    └── css/
+        └── style.css
+🛠️ Setup Instructions
+Follow these steps to run the project locally.
 
-Bus Tickets
+1. Clone the Repository
 
-Train Tickets
+git clone [https://github.com/amarnath0038/TravelGo.git](https://github.com/amarnath0038/TravelGo.git)
+cd travelgo_project
+2. Create a Virtual Environment
+Linux / Mac:
 
-Flight Tickets
+python3 -m venv venv
 
-Hotel Reservations
+Windows:
 
-Booking System
+python -m venv venv
 
-Select source city and destination
 
-Choose travel date
+3. Activate the Virtual Environment
+Linux / Mac:
 
-Automatic seat allocation
+source venv/bin/activate
 
-Dynamic price generation
+Windows:
 
-Unique booking ID generation
+venv\Scripts\activate
 
-Booking Management
+4. Install Dependencies
 
-View booking history
+pip install -r requirements.txt
 
-Cancel bookings
+5. Configure Environment Variables
 
-Track booking status (Confirmed / Cancelled)
+Create a .env file in the project root:
 
-Notifications
+# For Linux/Mac
+cp .env.example .env
 
-Sends booking notifications using AWS SNS
+# For Windows
+copy .env.example .env
+Edit the .env file with your credentials:
 
-Provides confirmation alerts for bookings and cancellations
+Ini, TOML
+AWS_REGION=us-east-1
+SNS_TOPIC_ARN=your_sns_topic_arn
+USE_AWS=true
 
-Cloud Integration
+Note: If AWS is not configured, the app falls back to local in-memory storage.
 
-TravelGo supports:
+6. Run the Application
+python app.py
+OR
+flask run
+The server will start at: http://127.0.0.1:5000
 
-AWS DynamoDB for storing users and bookings
+☁️ AWS Setup (For Deployment)
+DynamoDB Tables
+Users Table: travelgo_users (Primary key: email [String])
 
-AWS SNS for sending notifications
+Bookings Table: travelgo_bookings (Primary key: booking_id [String])
 
-If AWS credentials are not available, the system automatically switches to local storage mode.
+SNS Topic
+Create a topic named travelgo_notifications and subscribe your email address to receive updates.
 
-Technologies Used
-Backend
+🚢 Deployment
+For production on AWS EC2, use a WSGI server like gunicorn:
 
-Python
+pip install gunicorn
+gunicorn --bind 0.0.0.0:8000 app:app
+💻 Technologies Used
+Backend: Python, Flask
 
-Flask Framework
+Cloud: AWS DynamoDB, AWS SNS
 
-Frontend
-
-HTML5
-
-CSS3
-
-JavaScript
+Frontend: HTML5, CSS3
